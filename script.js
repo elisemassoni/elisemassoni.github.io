@@ -9,11 +9,17 @@ let players = document.getElementsByClassName("player");
 for(let i = 0; i<players.length; i++){
   let player = players[i];
   let button = player.getElementsByClassName("play-pause")[0];
-  button.addEventListener("click", function(){
-    silenceAll();
-    switchOn(player);
-  });
   let sound = player.getElementsByTagName("audio")[0];
+
+  button.addEventListener("click", function(){
+    playing = !sound.paused;
+    silenceAll();
+    if(!playing){
+      switchOn(player);
+    }
+
+  });
+  // let sound = player.getElementsByTagName("audio")[0];
   let progressBar = player.getElementsByClassName("progress-bar")[0];
   sound.addEventListener("timeupdate", function(){
     let perc = (sound.currentTime/sound.duration)*100;
@@ -36,6 +42,8 @@ function switchOn(player){
   button.innerHTML = "<p>stop</p>"
   button.style.backgroundColor = "white";
   button.style.color = "black";
+
+
 
 }
 
