@@ -189,6 +189,7 @@ function skiptotrack(num){
 
 
 
+//https://stackoverflow.com/a/65644070
 
 function scrollToSection(name) {
   // if (supportsSmoothScrolling()) {
@@ -196,7 +197,7 @@ function scrollToSection(name) {
   // }
   // event.preventDefault();
   const scrollToElem = document.getElementById(name);
-  SmoothVerticalScrolling(scrollToElem, 300, "top");
+  SmoothVerticalScrolling(scrollToElem, 1000, "top");
 }
 
 function supportsSmoothScrolling() {
