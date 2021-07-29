@@ -197,7 +197,7 @@ function scrollToSection(name) {
   // }
   // event.preventDefault();
   const scrollToElem = document.getElementById(name);
-  SmoothVerticalScrolling(scrollToElem, 1000, "top");
+  SmoothVerticalScrolling(scrollToElem, 300, "top");
 }
 
 function supportsSmoothScrolling() {
