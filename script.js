@@ -10,10 +10,10 @@ let canPlay = false;
 enterView({
 	selector: '#spacer',
 	progress: function(el, progress) {
-		console.log(progress);
+		// console.log(progress);
     let windowWidth = window.innerWidth;
     let buttonWidth = buttonsize + ( (windowWidth-buttonsize) * (progress/1) );
-    console.log(buttonWidth)
+    // console.log(buttonWidth)
     playButton.style.width = buttonWidth + "px"
     let buttonBorderRadius = (1-(progress/1)) * (buttonsize/2);
     playButton.style.borderRadius = buttonBorderRadius + "px"
