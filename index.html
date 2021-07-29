@@ -4,12 +4,16 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet/less" type="text/css" href="styles.less" />
+    <script src="//cdn.jsdelivr.net/npm/less@4.1.1" ></script>
+    <script src="https://unpkg.com/enter-view"></script>
+
   </head>
   <body>
-    <h1>hello</h1>
+    <!-- <h1>hello</h1> -->
 
-    <div class="player"  id="track-0">
+    <!-- <div class="player"  id="track-0">
       <div class="background-bar"></div>
       <div class="progress-bar"></div>
       <div class="play-pause">
@@ -31,6 +35,41 @@
         <p>Romantics</p>
       </div>
       <audio src="tracks/romantics.mp3"></audio>
+    </div> -->
+
+
+    <div class="scrollbox">
+      <div id="spacer"></div>
+
+      <div id="playerWrapper">
+        <div id="playButton">
+          <p>loading...</p>
+          <br></br>
+
+
+        </div>
+        <audio id="track" src="tracks/DIVINA_ALL_FINALE.mp3" preload="auto" loop></audio>
+      </div>
+      <div id="textWrapper">
+        <p>titles &darr;</p>
+        <br></br>
+        <p id="currentTimeDisplay">00.00</p>
+        <br></br>
+        <p class="trackName">00.00 - 04.17 • Enfer - Chant III - Seuil</p>
+        <p class="trackName">04.20 - 05.39 • Enfer - Chant XXXIV – Fin, Giron de Judas</p>
+        <p class="trackName">05.43 - 06.40 • Purgatoire - Chant premier - Purification de Dante</p>
+        <p class="trackName">06.45 - 07.15 • Chant IV - Les âmes paresseuses</p>
+        <p class="trackName">07.20 - 08.10 • Purgatoire - Chant XV - Vision de Dante</p>
+        <p class="trackName">08.11 - 08.55 • Purgatoire - Chant XVI - Colères</p>
+        <p class="trackName">09.09 - 10.15 • Purgatoire - Chant XXXI  - Purification de Dante par Mathilde</p>
+        <p class="trackName">10.17 - 11.49 • Paradis - Chant premier - Invocation - Sphère de feu</p>
+        <p class="trackName">11.50 - 13.17 • Paradis - Chant VIII Sphère de Venus - Ames tendres</p>
+        <p class="trackName">13.22 - 14.20 • Paradis - Chant des exiles</p>
+        <p class="trackName">13.22 - Fin     • Paradis - Chant XXXIII Prière à Marie - 3 cercles divins</p>
+      </div>
+
+
+
     </div>
 
     <script type="text/javascript" src="script.js"></script>

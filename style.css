@@ -1,65 +1,22 @@
 body{
   margin:0;
   font-family: monospace;
-  padding:10px;
+  /* padding:10px; */
   width:100%;
   height:100vh;
   border: black solid 8px;
   box-sizing: border-box;
+  /* overflow: hidden; */
 }
-
-.player{
-  display: flex;
-  width: 100%;
-  margin-bottom: 15px;
-  position: relative;
-  /* background-color: white; */
-  /* z-index: -2; */
-}
-.background-bar{
-  position: absolute;
+.scrollbox{
+  overflow-y: scroll;
   width:100%;
-  height:100%;
-  /* background-color: #cfd9ff; */
-  background-color: white;
-  z-index: -1;
-  /* transition: width 1s; */
-}
-.progress-bar{
-  position: absolute;
-  width:0%;
-  height:100%;
-  /* background-color: #cfd9ff; */
-  background-color: black;
-  z-index: -1;
-  /* transition: width 1s; */
-}
-.play-pause{
-  width:20vw;
-  height:20vw;
-  border-radius: 10vw;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  color: white;
+  height: calc(100vh - 8px);
+  outline: red 1px solid;
 }
 
-.play-pause p{
-  font-weight: bold;
-}
-
-.title{
-  display: flex;
-  width: 70vw;
-  /* justify-content: center; */
-  align-items: center;
-  mix-blend-mode: difference;
-  color: white;
-  /* padding: 0 25px; */
-}
-.title p{
-  padding-left: 15px;
-  font-size: 1.2em;
-}
+/* #player{
+  background-color: red;
+  width:100%;
+  height: 100vh;
+} */
