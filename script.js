@@ -78,7 +78,7 @@ track.addEventListener("timeupdate", function(){
 track.addEventListener("canplay", function(){
   console.log("can play");
   buttonText.innerHTML="play";
-  canPlay = true;
+  // canPlay = true;
 })
 track.addEventListener("canplaythrough", function(){
   console.log("can play through")
