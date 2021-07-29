@@ -6,6 +6,10 @@ let trackNames = document.getElementsByClassName("trackName")
 let currentTimeDisplay = document.getElementById("currentTimeDisplay")
 let activeColor = "#3880ff"
 // let canPlay = false;
+let unlockSkipping = document.getElementById("unlockSkipping")
+let allowSkip = false;
+
+
 
 enterView({
 	selector: '#spacer',
@@ -50,28 +54,29 @@ track.addEventListener("timeupdate", function(){
   let minDisplay = String(Math.floor(time/60)).padStart(2, '0')
   let secDisplay = String(Math.floor(time%60)).padStart(2, '0')
   currentTimeDisplay.innerHTML =  minDisplay + "." + secDisplay
-  if(time < convertToSeconds(4.17)){
+	// console.log(time)
+	if(time < convertToSeconds("4.17")){
     changeActiveTrack(0);
-  }else if(time < convertToSeconds(5.39)){
-    changeActiveTrack(0);
-  }else if(time < convertToSeconds(6.40)){
-    changeActiveTrack(0);
-  }else if(time < convertToSeconds(7.15)){
-    changeActiveTrack(0);
-  }else if(time < convertToSeconds(8.10)){
-    changeActiveTrack(0);
-  }else if(time < convertToSeconds(8.55)){
-    changeActiveTrack(0);
-  }else if(time < convertToSeconds(10.15)){
-    changeActiveTrack(0);
-  }else if(time < convertToSeconds(11.49)){
-    changeActiveTrack(0);
-  }else if(time < convertToSeconds(13.17)){
-    changeActiveTrack(0);
-  }else if(time < convertToSeconds(14.20)){
-    changeActiveTrack(0);
+  }else if(time < convertToSeconds("5.39")){
+    changeActiveTrack(1);
+  }else if(time < convertToSeconds("6.40")){
+    changeActiveTrack(2);
+  }else if(time < convertToSeconds("7.15")){
+    changeActiveTrack(3);
+  }else if(time < convertToSeconds("8.10")){
+    changeActiveTrack(4);
+  }else if(time < convertToSeconds("8.55")){
+    changeActiveTrack(5);
+  }else if(time < convertToSeconds("10.15")){
+    changeActiveTrack(6);
+  }else if(time < convertToSeconds("11.49")){
+    changeActiveTrack(7);
+  }else if(time < convertToSeconds("13.17")){
+    changeActiveTrack(8);
+  }else if(time < convertToSeconds("14.20")){
+    changeActiveTrack(9);
   }else if(time < track.duration){
-    changeActiveTrack(0);
+    changeActiveTrack(10);
   }
 })
 
@@ -89,7 +94,8 @@ track.addEventListener("onstalled", function(){
 
 
 function convertToSeconds(minSec){
-  return Math.floor(minSec)*60+(minSec-Math.floor(minSec))
+	// console.log(minSec, Math.floor(minSec)*60+(minSec-Math.floor(minSec)))
+  return Number(String(minSec).split(".")[0]*60)+Number(String(minSec).split(".")[1])
 }
 
 function changeActiveTrack(num){
@@ -100,3 +106,80 @@ function changeActiveTrack(num){
 }
 
 function isPlaying(audelem) { return !audelem.paused; }
+
+
+
+
+
+
+
+
+
+// skip tracks
+
+let desiredTrack = null;
+
+for(let i = 0; i <trackNames.length; i++){
+	trackNames[i].addEventListener("click", function(){
+		desiredTrack = i;
+		console.log(desiredTrack, i)
+		if(!allowSkip){
+			console.log(i);
+			document.getElementById('skipWarning').style.display = "block";
+			document.getElementById('skipWarning').scrollIntoView({ behavior: 'smooth' } );
+		}else{
+			skiptotrack(desiredTrack)
+		}
+
+	})
+
+}
+
+unlockSkipping.addEventListener("click", function(){
+	allowSkip = true;
+	skiptotrack(desiredTrack);
+	document.getElementById('textWrapper').scrollIntoView({ behavior: 'smooth' } );
+	setTimeout(function(){
+		document.getElementById('skipWarning').style.display = "none";
+
+	}, 1000)
+
+})
+
+
+function skiptotrack(num){
+	console.log("skipping to", num);
+
+	if(num == 0){
+		track.currentTime = convertToSeconds("0.0");
+	}else if(num == 1){
+		track.currentTime = convertToSeconds("4.20");
+	}else if(num == 2){
+		track.currentTime = convertToSeconds("5.43");
+	}else if(num == 3){
+		track.currentTime = convertToSeconds("6.45");
+	}else if(num == 4){
+		track.currentTime = convertToSeconds("7.20");
+	}else if(num == 5){
+		track.currentTime = convertToSeconds("8.11");
+	}else if(num == 6){
+		track.currentTime = convertToSeconds("9.09");
+
+	}else if(num == 7){
+		track.currentTime = convertToSeconds("10.17");
+
+	}else if(num == 8){
+		track.currentTime = convertToSeconds("11.50");
+
+	}else if(num == 9){
+		track.currentTime = convertToSeconds("13.22");
+
+	}else if(num == 10){
+		track.currentTime = convertToSeconds("14.23");
+
+	}
+
+	if(!isPlaying(track)){
+		playTrack()
+	}
+}
