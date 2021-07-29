@@ -5,7 +5,7 @@ let buttonText = playButton.getElementsByTagName("p")[0];
 let trackNames = document.getElementsByClassName("trackName")
 let currentTimeDisplay = document.getElementById("currentTimeDisplay")
 let activeColor = "#3880ff"
-let canPlay = false;
+let canPlay = true;
 
 enterView({
 	selector: '#spacer',
