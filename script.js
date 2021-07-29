@@ -5,7 +5,7 @@ let buttonText = playButton.getElementsByTagName("p")[0];
 let trackNames = document.getElementsByClassName("trackName")
 let currentTimeDisplay = document.getElementById("currentTimeDisplay")
 let activeColor = "#3880ff"
-let canPlay = true;
+let canPlay = false;
 
 enterView({
 	selector: '#spacer',
@@ -78,7 +78,7 @@ track.addEventListener("timeupdate", function(){
 track.addEventListener("canplay", function(){
   console.log("can play");
   buttonText.innerHTML="play";
-  // canPlay = true;
+  canPlay = true;
 })
 track.addEventListener("canplaythrough", function(){
   console.log("can play through")
