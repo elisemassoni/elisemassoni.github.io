@@ -126,7 +126,8 @@ for(let i = 0; i <trackNames.length; i++){
 		if(!allowSkip){
 			console.log(i);
 			document.getElementById('skipWarning').style.display = "block";
-			document.getElementById('skipWarning').scrollIntoView({ behavior: 'smooth' } );
+			// document.getElementById('skipWarning').scrollIntoView({ behavior: 'smooth' } );
+			scrollToSection('skipWarning');
 		}else{
 			skiptotrack(desiredTrack)
 		}
@@ -138,7 +139,8 @@ for(let i = 0; i <trackNames.length; i++){
 unlockSkipping.addEventListener("click", function(){
 	allowSkip = true;
 	skiptotrack(desiredTrack);
-	document.getElementById('textWrapper').scrollIntoView({ behavior: 'smooth' } );
+	// document.getElementById('textWrapper').scrollIntoView({ behavior: 'smooth' } );
+	scrollToSection("textWrapper")
 	setTimeout(function(){
 		document.getElementById('skipWarning').style.display = "none";
 
@@ -182,4 +184,43 @@ function skiptotrack(num){
 	if(!isPlaying(track)){
 		playTrack()
 	}
+}
+
+
+
+
+
+function scrollToSection(name) {
+  // if (supportsSmoothScrolling()) {
+  //   return;
+  // }
+  // event.preventDefault();
+  const scrollToElem = document.getElementById(name);
+  SmoothVerticalScrolling(scrollToElem, 300, "top");
+}
+
+function supportsSmoothScrolling() {
+  const body = document.body;
+  const scrollSave = body.style.scrollBehavior;
+  body.style.scrollBehavior = 'smooth';
+  const hasSmooth = getComputedStyle(body).scrollBehavior === 'smooth';
+  body.style.scrollBehavior = scrollSave;
+  return hasSmooth;
+};
+
+function SmoothVerticalScrolling(element, time, position) {
+  var eTop = element.getBoundingClientRect().top;
+  var eAmt = eTop / 100;
+  var curTime = 0;
+  while (curTime <= time) {
+    window.setTimeout(SVS_B, curTime, eAmt, position);
+    curTime += time / 100;
+  }
+}
+
+function SVS_B(eAmt, position) {
+  if (position == "center" || position == "")
+  window.scrollBy(0, eAmt / 2);
+  if (position == "top")
+  window.scrollBy(0, eAmt);
 }
